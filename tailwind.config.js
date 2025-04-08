@@ -20,7 +20,14 @@ module.exports = {
   }
   
   module.exports = {
-    darkMode: 'class',
-    // ...
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  };
+  
+  module.exports = {
+    darkMode: 'class', // <-- ini penting!
+    // ... rest of config
   }
   

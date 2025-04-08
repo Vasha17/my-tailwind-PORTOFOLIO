@@ -105,6 +105,9 @@
 .mx-auto {
   margin-inline: auto;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .box-border {
   box-sizing: border-box;
 }
@@ -757,9 +760,21 @@
   border-style: var(--tw-border-style);
   border-width: 1px;
 }
+.border-1 {
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+}
 .border-2 {
   border-style: var(--tw-border-style);
   border-width: 2px;
+}
+.border-5 {
+  border-style: var(--tw-border-style);
+  border-width: 5px;
+}
+.border-6 {
+  border-style: var(--tw-border-style);
+  border-width: 6px;
 }
 .border-x {
   border-inline-style: var(--tw-border-style);
@@ -1339,6 +1354,26 @@
 .ring-inset {
   --tw-ring-inset: inset;
 }
+.hover\:scale-10 {
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 10%;
+      --tw-scale-y: 10%;
+      --tw-scale-z: 10%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+}
+.hover\:scale-100 {
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 100%;
+      --tw-scale-y: 100%;
+      --tw-scale-z: 100%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+}
 .hover\:scale-105 {
   &:hover {
     @media (hover: hover) {
@@ -1355,6 +1390,16 @@
       --tw-scale-x: 110%;
       --tw-scale-y: 110%;
       --tw-scale-z: 110%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+}
+.hover\:scale-120 {
+  &:hover {
+    @media (hover: hover) {
+      --tw-scale-x: 120%;
+      --tw-scale-y: 120%;
+      --tw-scale-z: 120%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }
@@ -1376,6 +1421,16 @@
   &:focus {
     --tw-outline-style: none;
     outline-style: none;
+  }
+}
+.dark\:block {
+  @media (prefers-color-scheme: dark) {
+    display: block;
+  }
+}
+.dark\:hidden {
+  @media (prefers-color-scheme: dark) {
+    display: none;
   }
 }
 @property --tw-translate-x {
