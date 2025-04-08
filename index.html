@@ -199,17 +199,30 @@
         .dark .icon img {
             filter: invert(1);
         }
+        
+        .icon img {
+            filter: none; /* Ensure icons appear correctly in light mode */
+        }
+        
+        .details-container {
+            background-color: #f5f5f5; /* Light gray for light mode */
+        }
+        
         .dark .details-container {
-            background-color: #2f3c5f !important; /* Dark blue background for project containers */
-            transparent: 50%; /* Slightly transparent */
+            background-color: rgba(47, 60, 95, 0.7); /* Dark blue transparent for dark mode */
         }
         .ellipsis-fixed {
-    position: fixed;
-    margin: 0; /* Ini kuncinya! Biar mentok kanan */
-    top: 0; /* Optional: Kalau mau di pojok kanan atas */
-    margin-right: 0; /* Ga perlu lagi margin kanan */
-    border-bottom: 20px;
-}
+        position: fixed;
+        right: 10px; /* Ensure it appears on the right */
+        top: 10px; /* Adjust for visibility */
+        z-index: 100; /* Ensure it appears above other elements */
+        }
+        .fab.fa-github {
+            color: black; /* Ensure GitHub icon is visible in light mode */
+        }
+        .dark .fab.fa-github {
+            color: white; /* Ensure GitHub icon is visible in dark mode */
+        }
     </style>
     <script>
         function toggleTheme() {
@@ -321,6 +334,17 @@ window.onload = () => {
             <div class="icon" onclick="showPage('contact')"><i class="fas fa-envelope"></i></div>
         </div>
     </div>
+    <div class="relative ellipsis-fixed">
+        <i 
+            class="fas fa-ellipsis-h cursor-pointer hover:text-red-500 transition dark:text-white"
+            onclick="toggleModeSelector()"
+            title="Toggle dark/light mode"
+        ></i>
+        <div id="mode-selector" class="mode-selector">
+            <button onclick="setMode('light')">☀️</button>
+            <button onclick="setMode('dark')">🌙</button>
+        </div>
+    </div>
     <body class="bg-white3 font-roboto">
         <div class="max-w-4xl mx-auto p-4">
             <div class="bg-white rounded-lg shadow-lg p-4 border-2 border-black">
@@ -337,7 +361,7 @@ window.onload = () => {
                 </div>
                 <div class="relative ml-auto">
                     <i 
-                        class="fas fa-ellipsis-h cursor-pointer hover:text-red-500 transition dark:text-white"
+                        class="fas fa-ellipsis-h cursor-pointer hover:text-black-500 transition dark:text-white"
                         onclick="toggleModeSelector()"
                         title="Toggle dark/light mode"
                     ></i>
@@ -345,7 +369,7 @@ window.onload = () => {
                         <div class="relative">
                             <span 
                                 id="sun-emoji" 
-                                class="cursor-pointer text-2xl hover:text-red-500 transition"
+                                class="cursor-pointer text-2xl hover:text-black-500 transition"
                                 onclick="toggleTheme()"
                                 title="Toggle dark/light mode"
                             >☀️</span>
