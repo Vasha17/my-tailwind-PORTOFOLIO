@@ -205,11 +205,13 @@
         }
         
         .details-container {
-            background-color: #f5f5f5; /* Light gray for light mode */
+            background-color: #f0f0f0; /* Light gray background for light mode */
+            color: black; /* Black font for light mode */
         }
         
         .dark .details-container {
             background-color: rgba(47, 60, 95, 0.7); /* Dark blue transparent for dark mode */
+            color: white; /* White font for dark mode */
         }
         .ellipsis-fixed {
         position: fixed;
@@ -222,6 +224,12 @@
         }
         .dark .fab.fa-github {
             color: white; /* Ensure GitHub icon is visible in dark mode */
+        }
+        .fas.fa-ellipsis-h {
+            color: black; /* Black ellipsis icon in light mode */
+        }
+        .dark .fas.fa-ellipsis-h {
+            color: white; /* White ellipsis icon in dark mode */
         }
     </style>
     <script>
@@ -544,7 +552,7 @@ window.onload = () => {
                                 <p class="text-gray-700"><a href="//github.com/Vasha17" class="hover:underline">GitHub Profile</a></p>
                             </div>
                         </div>
-                        <form action="#" method="POST" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mb-12">
+                        <form action="https://formsubmit.co/vanessa.sha75@gmail.com" method="POST" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mb-12">
                             <h2 class="text-xl font-semibold text-center mb-4">Send Me a Message</h2>
                         
                             <div class="mb-4">
@@ -582,7 +590,8 @@ window.onload = () => {
                                     class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 ></textarea>
                             </div>
-                        
+                            <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form">
+                            <input type="hidden" name="_captcha" value="false">
                             <button 
                                 type="submit" 
                                 class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
