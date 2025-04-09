@@ -58,6 +58,15 @@
             background: #007BFF; /* Change to blue on hover */
         }
 
+        /* Highlight the current page in blue for both light and dark modes */
+        .icon.active {
+            color: blue; /* Blue color for the active page */
+        }
+
+        .dark .icon.active {
+            color: blue; /* Ensure blue color in dark mode */
+        }
+
         .content {
             padding: 120px 30px 30px;
         }
@@ -210,7 +219,7 @@
         }
         
         .dark .details-container {
-            background-color: rgba(47, 60, 95, 0.7); /* Dark blue transparent for dark mode */
+            background-color: #4a4a4a; /* Grey color for dark mode */
             color: white; /* White font for dark mode */
         }
         .ellipsis-fixed {
@@ -232,6 +241,40 @@
             color: white; /* White ellipsis icon in dark mode */
         }
         
+        /* Container for Academic & Organization boxes */
+.about-details-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items in a row */
+    gap: 1rem; /* Space between the boxes */
+    justify-content: center; /* Center the boxes horizontally */
+    margin-bottom: 1.5rem; /* Add some space below the container */
+}
+
+.details-container {
+    border: 1px solid #ccc; /* Border for the box */
+    padding: 1rem 1.5rem; /* Padding inside the box */
+    border-radius: 1rem; /* Rounded corners */
+    text-align: center; /* Center text */
+    max-width: 300px; /* Maximum width for each box */
+    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #f9f9f9; /* Background color */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
+}
+
+.details-container:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+}
+
+.center-text {
+    text-align: center; /* Center text */
+}
+
+/* Update Resume and Contact Info in dark mode */
+.dark .resume-contact-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Match Academic & Organization color */
+    color: white;
+}
     </style>
     <script>
         function toggleTheme() {
@@ -285,11 +328,11 @@ window.onload = () => {
             document.getElementById('mode-selector').style.display = 'none'; // Hide selector after selection
         }
 
-        function openModal(title, date, description, imageUrl) {
+        function openModal(title, date, description) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-date').innerText = date;
             document.getElementById('modal-description').innerText = description;
-            document.getElementById('modal-image').src = imageUrl;
+            document.getElementById('modal-image').style.display = 'none'; // Hide image
             document.getElementById('modal').style.display = 'flex'; // Show modal
             document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
         }
@@ -319,19 +362,16 @@ window.onload = () => {
             if (page) {
                 page.classList.add('active');
             }
+
+            // Update active icon
+            document.querySelectorAll('.icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
+            if (activeIcon) {
+                activeIcon.classList.add('active');
+            }
         }
-
-    {
-        function showPage(id) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-
-    const icons = document.querySelectorAll('.icon');
-    icons.forEach(icon => icon.classList.remove('text-blue-500'));
-    event.currentTarget.classList.add('text-blue-500');
-}
-    }
     </script>
 </head>
 <body class="bg-white3 font-roboto">
@@ -406,7 +446,7 @@ window.onload = () => {
                     <div class="flex justify-center items-center space-x-4 mt-4">
                         <img alt="Vanessa Suharly profile picture" class="w-36 h-36 md:w-48 md:h-48 rounded-lg border-2 border-black hover:scale-105 transition-transform" src="./assets/about-me-square.png" loading="lazy"/>
                         <div class="flex flex-col justify-center">
-                            <div class="flex space-x-4 mt-2">
+                            <div class="flex space-x-4 mt-2 resume-contact-container">
                                 <button class="p-2 rounded-lg bg-gray-300 hover:bg-gray-400 transition-colors shadow-md" onclick="window.open('./assets/CV.pdf')">Resume</button>
                                 <button class="p-2 rounded-lg bg-gray-200 hover:bg-gray-400 transition-colors shadow-md" onclick="window.location.href='mailto:vanessa@email.com'">Contact Info</button>
                             </div>
@@ -423,9 +463,24 @@ window.onload = () => {
 </div>
                         </div>            
                     </div>
-                    <p class="mt-4 text-white-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
-                    <p class="mt-2 text-white-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
-                    <p class="mt-2 text-white-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
+                    <div id="home" class="page active mt-4">
+                        <!-- Academic and Organization Details -->
+                        <div class="about-details-container">
+                            <div class="details-container" onclick="openModal('Academic Focus Grade', '', 'Advanced Mathematics - 87,93,86 | English - 90, 92, 92 | Informatics - 85,87,98 | Economics - 91,94,92')">
+                                <h3 class="center-text font-bold">Academic Focus</h3>
+                            </div>
+                            <div class="details-container" onclick="openModal('Organization', '', 'Programmer and Designer - Coding Club | Director of Academic Affairs - Student Council/OSIS')">
+                                <h3 class="center-text font-bold">Organization</h3>
+                            </div>
+                        </div>
+                    
+                        <p class="text-white-600 text-center text-lg">Hello, I'm</p>
+                        <h1 class="font-bold text-black text-3xl text-center mb-4">Vanessa Suharly</h1>
+                    
+                        <p class="mt-4 text-white-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
+                        <p class="mt-2 text-white-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
+                        <p class="mt-2 text-white-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
+                    </div>
                 </div>
             </div>
             <div id="experiences" class="page mt-4">
@@ -494,7 +549,7 @@ window.onload = () => {
                 <div class="about-containers flex flex-wrap justify-center gap-5 mb-10 mt-10">
                     <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
                         onclick="openModal('WEATHER', 'April 2022 - June 2022', 
-                        'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')" style="width: calc(11rem + 20px);">
+                        'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.')">
                         <div class="article-container flex justify-center">
                             <img src="./assets/Project-1-me.png" alt="Weather App Project" class="project-img w-44 h-44" loading="lazy"/>
                         </div>
@@ -502,7 +557,7 @@ window.onload = () => {
                     </div>
                     <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
                         onclick="openModal('CUBE', 'July 2023 - September 2023', 
-                        'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')" style="width: calc(11rem + 20px);">
+                        'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.')">
                         <div class="article-container flex justify-center">
                             <img src="./assets/Project-2-me.png" alt="Cube App Project" class="project-img w-44 h-44" loading="lazy"/>
                         </div>
@@ -510,7 +565,7 @@ window.onload = () => {
                     </div>
                     <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
                         onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 
-                        'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')" style="width: calc(11rem + 20px);">
+                        'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.')">
                         <div class="article-container flex justify-center">
                             <img src="./assets/Project-3-me.png" alt="Official School Website Project" class="project-img w-44 h-44" loading="lazy"/>
                         </div>
@@ -628,11 +683,11 @@ window.onload = () => {
       localStorage.setItem('theme', 'dark');
     }
   }
-        function openModal(title, date, description, imageUrl) {
+        function openModal(title, date, description) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-date').innerText = date;
             document.getElementById('modal-description').innerText = description;
-            document.getElementById('modal-image').src = imageUrl;
+            document.getElementById('modal-image').style.display = 'none'; // Hide image
             document.getElementById('modal').style.display = 'flex'; // Show modal
             document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
         }
@@ -662,19 +717,16 @@ window.onload = () => {
             if (page) {
                 page.classList.add('active');
             }
+
+            // Update active icon
+            document.querySelectorAll('.icon').forEach(icon => {
+                icon.classList.remove('active');
+            });
+            const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
+            if (activeIcon) {
+                activeIcon.classList.add('active');
+            }
         }
-
-    {
-        function showPage(id) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-
-    const icons = document.querySelectorAll('.icon');
-    icons.forEach(icon => icon.classList.remove('text-blue-500'));
-    event.currentTarget.classList.add('text-blue-500');
-}
-    }
     </script>
 </body>
 </html>
