@@ -106,6 +106,7 @@
             justify-content: center;
             align-items: center;
         }
+        
         .modal-content {
             background-color: #fefefe;
             margin: 0 auto;
@@ -328,11 +329,19 @@ window.onload = () => {
             document.getElementById('mode-selector').style.display = 'none'; // Hide selector after selection
         }
 
-        function openModal(title, date, description) {
+        function openModal(title, date, description, imageSrc) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-date').innerText = date;
             document.getElementById('modal-description').innerText = description;
-            document.getElementById('modal-image').style.display = 'none'; // Hide image
+
+             // Handle image display
+            const modalImage = document.getElementById('modal-image');
+            if (imageSrc) {
+                modalImage.src = imageSrc;
+                modalImage.style.display = 'block'; // Show image if source exists
+            } else {
+                modalImage.style.display = 'none'; // Hide image if no source
+            }
             document.getElementById('modal').style.display = 'flex'; // Show modal
             document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
         }
@@ -372,6 +381,25 @@ window.onload = () => {
                 activeIcon.classList.add('active');
             }
         }
+
+        function ensureProjectImages() {
+            const projectImages = document.querySelectorAll('.project-img');
+            projectImages.forEach(img => {
+                img.style.display = 'block'; // Ensure images are visible
+                img.onerror = () => {
+                    img.style.display = 'none'; // Hide image if it fails to load
+                };
+            });
+        }
+
+        window.onload = () => {
+            ensureProjectImages();
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+             // Initially show the "home" page
+            showPage('home');
+        };
     </script>
 </head>
 <body class="bg-white3 font-roboto">
@@ -463,24 +491,18 @@ window.onload = () => {
 </div>
                         </div>            
                     </div>
-                    <div id="home" class="page active mt-4">
-                        <!-- Academic and Organization Details -->
-                        <div class="about-details-container">
-                            <div class="details-container" onclick="openModal('Academic Focus Grade', '', 'Advanced Mathematics - 87,93,86 | English - 90, 92, 92 | Informatics - 85,87,98 | Economics - 91,94,92')">
-                                <h3 class="center-text font-bold">Academic Focus</h3>
-                            </div>
-                            <div class="details-container" onclick="openModal('Organization', '', 'Programmer and Designer - Coding Club | Director of Academic Affairs - Student Council/OSIS')">
-                                <h3 class="center-text font-bold">Organization</h3>
-                            </div>
+                    <!-- Academic and Organization Details -->
+                    <div class="about-details-container">
+                        <div class="details-container" onclick="openModal('Academic Focus Grade', '', 'Advanced Mathematics - 87,93,86 | English - 90,92,92 | Informatics - 85,87,98 | Economics - 91,94,92')">
+                            <h3 class="center-text font-bold">Academic Focus</h3>
                         </div>
-                    
-                        <p class="text-white-600 text-center text-lg">Hello, I'm</p>
-                        <h1 class="font-bold text-black text-3xl text-center mb-4">Vanessa Suharly</h1>
-                    
-                        <p class="mt-4 text-white-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
-                        <p class="mt-2 text-white-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
-                        <p class="mt-2 text-white-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
+                        <div class="details-container" onclick="openModal('Organization', '', 'Programmer and Designer - Coding Club | Director of Academic Affairs - Student Council/OSIS')">
+                            <h3 class="center-text font-bold">Organization</h3>
+                        </div>
                     </div>
+                    <p class="mt-4 text-white-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
+                    <p class="mt-2 text-white-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
+                    <p class="mt-2 text-white-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
                 </div>
             </div>
             <div id="experiences" class="page mt-4">
@@ -542,36 +564,39 @@ window.onload = () => {
                 </div>
             </div>
             <div id="projects" class="page mt-4">
-                <div class="bg-white dark:bg-black text-black dark:text-white p-4 rounded-lg mb-5">
-                    <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 text-center font text-lg">Browse My Recent</p>
-                    <h1 class="text-2xl font-bold text-black dark:text-white text-center">Projects</h1>
-                </div>
-                <div class="about-containers flex flex-wrap justify-center gap-5 mb-10 mt-10">
-                    <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-                        onclick="openModal('WEATHER', 'April 2022 - June 2022', 
-                        'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.')">
-                        <div class="article-container flex justify-center">
-                            <img src="./assets/Project-1-me.png" alt="Weather App Project" class="project-img w-44 h-44" loading="lazy"/>
-                        </div>
-                        <h2 class="experience-sub-title project-title text-center font-bold text-black">WEATHER APP</h2>
-                    </div>
-                    <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-                        onclick="openModal('CUBE', 'July 2023 - September 2023', 
-                        'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.')">
-                        <div class="article-container flex justify-center">
-                            <img src="./assets/Project-2-me.png" alt="Cube App Project" class="project-img w-44 h-44" loading="lazy"/>
-                        </div>
-                        <h2 class="experience-sub-title project-title text-center font-bold text-black">CUBE APP</h2>
-                    </div>
-                    <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-                        onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 
-                        'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.')">
-                        <div class="article-container flex justify-center">
-                            <img src="./assets/Project-3-me.png" alt="Official School Website Project" class="project-img w-44 h-44" loading="lazy"/>
-                        </div>
-                        <h2 class="experience-sub-title project-title text-center font-bold text-black">OFFICIAL SCHOOL WEBSITE</h2>
-                    </div>
-                </div>
+    <div class="bg-white dark:bg-black text-black dark:text-white p-4 rounded-lg mb-5">
+        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 text-center font text-lg">Browse My Recent</p>
+        <h1 class="text-2xl font-bold text-black dark:text-white text-center">Projects</h1>
+    </div>
+    <div class="about-containers flex flex-wrap justify-center gap-5 mb-10 mt-10">
+        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
+            onclick="openModal('WEATHER', 'April 2022 - June 2022', 
+            'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')">
+            <div class="article-container flex justify-center">
+                <img src="./assets/Project-1-me.png" alt="Weather App Project" class="project-img w-44 h-44" loading="lazy"/>
+            </div>
+            <h2 class="experience-sub-title project-title text-center font-bold text-black">WEATHER APP</h2>
+        </div>
+
+        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
+            onclick="openModal('CUBE', 'July 2023 - September 2023', 
+            'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')">
+            <div class="article-container flex justify-center">
+                <img src="./assets/Project-2-me.png" alt="Cube App Project" class="project-img w-44 h-44" loading="lazy"/>
+            </div>
+            <h2 class="experience-sub-title project-title text-center font-bold text-black">CUBE APP</h2>
+        </div>
+
+        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
+            onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 
+            'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')">
+            <div class="article-container flex justify-center">
+                <img src="./assets/Project-3-me.png" alt="Official School Website Project" class="project-img w-44 h-44" loading="lazy"/>
+            </div>
+            <h2 class="experience-sub-title project-title text-center font-bold text-black">OFFICIAL SCHOOL WEBSITE</h2>
+        </div>
+    </div>
+</div>
             </div>
 
             <!-- Modal Structure -->
@@ -646,87 +671,96 @@ window.onload = () => {
                                     class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 ></textarea>
                             </div>
-                            <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form">
-                            <input type="hidden" name="_captcha" value="false">
-                            <button 
-                                type="submit" 
-                                class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-                            >
-                                Send Message
-                            </button>
-                        </form>                        
-                    </div>
+                        <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form">
+                        <input type="hidden" name="_captcha" value="false">
+                        <button 
+                            type="submit" 
+                            class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
+                        >
+                            Send Message
+                        </button>
+                    </form>                        
                 </div>
-            </div>       
-        </div>
+            </div>
+        </div>       
     </div>
-    <script>
-    window.onload = () => {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.classList.add('dark');
-    }
-  };
+</div>
+<script>
+window.onload = () => {
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
+};
 
-  // Fungsi toggle
-  function toggleDarkMode() {
-    const html = document.documentElement;
+// Fungsi toggle
+function toggleDarkMode() {
+const html = document.documentElement;
 
-    function toggleDarkMode() {
-  console.log("Toggle clicked!");
+function toggleDarkMode() {
+console.log("Toggle clicked!");
 }
 
-    if (html.classList.contains('dark')) {
-      html.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+if (html.classList.contains('dark')) {
+  html.classList.remove('dark');
+  localStorage.setItem('theme', 'light');
+} else {
+  html.classList.add('dark');
+  localStorage.setItem('theme', 'dark');
+}
+}
+    function openModal(title, date, description, imageSrc) {
+        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-date').innerText = date;
+        document.getElementById('modal-description').innerText = description;
+
+         // Handle image display
+        const modalImage = document.getElementById('modal-image');
+        if (imageSrc) {
+            modalImage.src = imageSrc;
+            modalImage.style.display = 'block'; // Show image if source exists
+        } else {
+            modalImage.style.display = 'none'; // Hide image if no source
+        }
+        document.getElementById('modal').style.display = 'flex'; // Show modal
+        document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
     }
-  }
-        function openModal(title, date, description) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-date').innerText = date;
-            document.getElementById('modal-description').innerText = description;
-            document.getElementById('modal-image').style.display = 'none'; // Hide image
-            document.getElementById('modal').style.display = 'flex'; // Show modal
-            document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none'; // Hide modal
+        document.getElementById('modal').setAttribute('aria-hidden', 'true'); // Update aria attribute
+    }
+
+    // Ensure modal is hidden on page load
+    window.onload = function() {
+        document.getElementById('modal').style.display = 'none'; // Hide modal on load
+    };
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('modal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        const page = document.getElementById(pageId);
+        if (page) {
+            page.classList.add('active');
         }
 
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none'; // Hide modal
-            document.getElementById('modal').setAttribute('aria-hidden', 'true'); // Update aria attribute
+        // Update active icon
+        document.querySelectorAll('.icon').forEach(icon => {
+            icon.classList.remove('active');
+        });
+        const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
+        if (activeIcon) {
+            activeIcon.classList.add('active');
         }
-
-        // Ensure modal is hidden on page load
-        window.onload = function() {
-            document.getElementById('modal').style.display = 'none'; // Hide modal on load
-        };
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            const page = document.getElementById(pageId);
-            if (page) {
-                page.classList.add('active');
-            }
-
-            // Update active icon
-            document.querySelectorAll('.icon').forEach(icon => {
-                icon.classList.remove('active');
-            });
-            const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
-            if (activeIcon) {
-                activeIcon.classList.add('active');
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
+
