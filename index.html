@@ -2,765 +2,911 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Profile Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanessa Suharly | Portfolio</title>
     <!-- CDN Tailwind CSS -->
     <link rel="icon" href="data:,">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #f59e0b;
+        }
+        
         body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background: url('https://i.pinimg.com/736x/34/e3/42/34e342001d68ff2ada627871626afaa2.jpg') no-repeat center center fixed;
-            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+            color: #333; /* Default text color to dark */
+        }
+        
+        .dark body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9; /* Light text in dark mode */
+        }
+        
+        /* logo */
+        .logo-v {
+            animation: float 3s ease-in-out infinite;
         }
 
-        .nav-container {
+        .logo-v {
+            text-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animated background for hero section */
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(245,158,11,0.1) 100%);
             position: relative;
-            background-color: #f1f1f1;
-            height: 100px;
+            overflow: hidden;
         }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-around; /* Space out the icons evenly */
-            align-items: center;
-            padding: 20px 30px;
-            position: relative;
-            background: rgba(255, 255, 255, 0.8); /* White-grey background */
-            border-radius: 0 0 20px 20px; /* Rounded bottom corners */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .icon {
-            font-size: 24px;
-            color: #000;
-            cursor: pointer; /* Change cursor to pointer for clickable icons */
-            position: relative; /* Position relative for the hover effect */
-        }
-
-        .icon::after {
-            content: '';
+        
+        .hero-bg::before {
+            content: "";
             position: absolute;
-            bottom: -5px; /* Position the curve below the icon */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 5px; /* Height of the curve */
-            background: transparent; /* Default background */
-            border-radius: 10px; /* Rounded corners */
-            transition: background 0.3s ease; /* Smooth transition */
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: -1;
         }
-
-        .icon:hover::after {
-            background: #007BFF; /* Change to blue on hover */
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
-
-        /* Highlight the current page in blue for both light and dark modes */
-        .icon.active {
-            color: blue; /* Blue color for the active page */
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
-
-        .dark .icon.active {
-            color: blue; /* Ensure blue color in dark mode */
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
         }
-
-        .content {
-            padding: 120px 30px 30px;
+        
+        /* Wave animation */
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
         }
-
-        .page {
-            display: none;
+        
+        .wave-animation {
+            display: inline-block;
+            animation: wave 2.5s infinite;
+            transform-origin: 70% 70%;
         }
-        .page.active {
-            display: block;
+        
+        /* Glow effect */
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
         }
-        .profile-picture-container {
-            position: relative;
+        
+        .glow:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
         }
-        .profile-picture-border {
-            position: absolute;
-            inset: 0;
-            border: 4px solid black;
-            border-radius: 50%;
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .content-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 50px;
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 20;
-            left: 0;
-            top: 0;
-            width: 100%;
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: var(--primary-dark);
+        }
+        
+        /* Project card hover effect */
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .project-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Skill bar animation */
+        @keyframes fill {
+            from { width: 0; }
+            to { width: var(--skill-level); }
+        }
+        
+        .skill-bar-fill {
+            animation: fill 1.5s ease-out forwards;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
         
-        .modal-content {
-            background-color: #fefefe;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
-            border-radius: 10px;
-            position: relative;
-            text-align: justify;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .modal-content p {
-            text-align: justify;
-            margin: 10px 0;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .dark {
-            background-color: #121212;
-            color: white;
-        }
-        .mode-selector {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-        }
-        .mode-selector button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            text-align: left;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .mode-selector button:hover {
-            background: #f0f0f0;
-        }
-        html.dark body {
-            html.dark .card {
-    background-color: black;
-    border-color: white;
-}
-    color: white;
-}
-        .dark .bg-white {
-            background-color: black !important;
-        }
-        .dark .text-black {
-            color: white !important;
-        }
-        .dark .border-black {
-            border-color: white !important;
-        }
-        .dark .hover\:text-red-500:hover {
-            color: red !important;
-        }
-        .dark .nav-content {
-            background-color: #1f1f1f !important;
-        }
-        .dark .icon {
-            color: white !important;
-        }
-        .dark .bg-white.shadow-md {
-            background-color: #1f1f1f !important;
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2) !important;
-        }
-        .dark .text-gray-600 {
-            color: #d1d1d1 !important;
-        }
-        .dark .text-gray-700 {
-            color: #c1c1c1 !important;
-        }
-        .dark .project-title {
-            color: white !important;
-        }
-        .dark .modal-content {
-            background-color: black !important;
-            color: white !important;
-        }
-        .dark .icon img {
-            filter: invert(1);
+        /* Typewriter effect */
+        .typewriter {
+            border-right: 3px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            color: #000; /* Warna hitam untuk light mode */
         }
         
-        .icon img {
-            filter: none; /* Ensure icons appear correctly in light mode */
+        .dark .typewriter {
+            color: #f1f5f9; /* Light text for dark mode */
         }
         
-        .details-container {
-            background-color: #f0f0f0; /* Light gray background for light mode */
-            color: black; /* Black font for light mode */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
         
-        .dark .details-container {
-            background-color: #4a4a4a; /* Grey color for dark mode */
-            color: white; /* White font for dark mode */
-        }
-        .ellipsis-fixed {
-        position: fixed;
-        right: 10px; /* Ensure it appears on the right */
-        top: 10px; /* Adjust for visibility */
-        z-index: 100; /* Ensure it appears above other elements */
-        }
-        .fab.fa-github {
-            color: black; /* Ensure GitHub icon is visible in light mode */
-        }
-        .dark .fab.fa-github {
-            color: white; /* Ensure GitHub icon is visible in dark mode */
-        }
-        .fas.fa-ellipsis-h {
-            color: black; /* Black ellipsis icon in light mode */
-        }
-        .dark .fas.fa-ellipsis-h {
-            color: white; /* White ellipsis icon in dark mode */
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
         }
         
-        /* Container for Academic & Organization boxes */
-.about-details-container {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: row; /* Arrange items in a row */
-    gap: 1rem; /* Space between the boxes */
-    justify-content: center; /* Center the boxes horizontally */
-    margin-bottom: 1.5rem; /* Add some space below the container */
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Section fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* Navbar glass effect */
+        .navbar-glass {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dark .navbar-glass {
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Floating action button */
+        .fab-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+        
+        .fab-button:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        /* Hero section responsive improvements */
+        .hero-content {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+    .hero-image-container {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
 }
-
-.details-container {
-    border: 1px solid #ccc; /* Border for the box */
-    padding: 1rem 1.5rem; /* Padding inside the box */
-    border-radius: 1rem; /* Rounded corners */
-    text-align: center; /* Center text */
-    max-width: 300px; /* Maximum width for each box */
-    cursor: pointer; /* Pointer cursor on hover */
-    background-color: #f9f9f9; /* Background color */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
-}
-
-.details-container:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
-}
-
-.center-text {
-    text-align: center; /* Center text */
-}
-
-/* Update Resume and Contact Info in dark mode */
-.dark .resume-contact-container {
-    background-color: rgba(0, 0, 0, 0.7); /* Match Academic & Organization color */
-    color: white;
-}
+            .hero-content {
+                padding-top: 6rem;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.25rem;
+                margin-top: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .typewriter {
+                font-size: 1.25rem;
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                color: #000; /* Warna hitam untuk mobile */
+            }
+            
+            .hero-image-container {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        
     </style>
-    <script>
-        function toggleTheme() {
-    const html = document.documentElement;
-    const sunEmoji = document.getElementById('sun-emoji');
-    const moonEmoji = document.getElementById('moon-emoji');
 
-    if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-        sunEmoji.classList.remove('hidden'); // Show sun emoji
-        moonEmoji.classList.add('hidden'); // Hide moon emoji
-    } else {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-        sunEmoji.classList.add('hidden'); // Hide sun emoji
-        moonEmoji.classList.remove('hidden'); // Show moon emoji
-    }
-}
-
-window.onload = () => {
-    if (localStorage.getItem('theme') === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.getElementById('sun-emoji').classList.add('hidden'); // Hide sun emoji
-        document.getElementById('moon-emoji').classList.remove('hidden'); // Show moon emoji
-    } else {
-        document.getElementById('sun-emoji').classList.remove('hidden'); // Show sun emoji
-        document.getElementById('moon-emoji').classList.add('hidden'); // Hide moon emoji
-    }
-};
-        window.onload = () => {
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-        };
-
-        function toggleModeSelector() {
-            const selector = document.getElementById('mode-selector');
-            selector.style.display = selector.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function setMode(mode) {
-            const html = document.documentElement;
-            if (mode === 'dark') {
-                html.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                html.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            }
-            document.getElementById('mode-selector').style.display = 'none'; // Hide selector after selection
-        }
-
-        function openModal(title, date, description, imageSrc) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-date').innerText = date;
-            document.getElementById('modal-description').innerText = description;
-
-             // Handle image display
-            const modalImage = document.getElementById('modal-image');
-            if (imageSrc) {
-                modalImage.src = imageSrc;
-                modalImage.style.display = 'block'; // Show image if source exists
-            } else {
-                modalImage.style.display = 'none'; // Hide image if no source
-            }
-            document.getElementById('modal').style.display = 'flex'; // Show modal
-            document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none'; // Hide modal
-            document.getElementById('modal').setAttribute('aria-hidden', 'true'); // Update aria attribute
-        }
-
-        // Ensure modal is hidden on page load
-        window.onload = function() {
-            document.getElementById('modal').style.display = 'none'; // Hide modal on load
-        };
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            const page = document.getElementById(pageId);
-            if (page) {
-                page.classList.add('active');
-            }
-
-            // Update active icon
-            document.querySelectorAll('.icon').forEach(icon => {
-                icon.classList.remove('active');
-            });
-            const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
-            if (activeIcon) {
-                activeIcon.classList.add('active');
-            }
-        }
-
-        function ensureProjectImages() {
-            const projectImages = document.querySelectorAll('.project-img');
-            projectImages.forEach(img => {
-                img.style.display = 'block'; // Ensure images are visible
-                img.onerror = () => {
-                    img.style.display = 'none'; // Hide image if it fails to load
-                };
-            });
-        }
-
-        window.onload = () => {
-            ensureProjectImages();
-            if (localStorage.getItem('theme') === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
-             // Initially show the "home" page
-            showPage('home');
-        };
-    </script>
 </head>
-<body class="bg-white3 font-roboto">
-    <div class="nav-container">
-        <div class="nav-content">
-            <div class="icon" onclick="showPage('home')"><i class="fas fa-home"></i></div>
-            <div class="icon" onclick="showPage('experiences')"><i class="fas fa-user"></i></div>
-            <div class="icon" onclick="showPage('projects')"><i class="fas fa-briefcase"></i></div>
-            <div class="icon" onclick="showPage('contact')"><i class="fas fa-envelope"></i></div>
-        </div>
+<body class="bg-white dark:bg-black text-gray-800 dark:text-white transition-colors duration-300">
+    <!-- Animated Background -->
+    <div class="fixed inset-0 -z-10 opacity-10 dark:opacity-5">
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
     </div>
-    <div class="relative ellipsis-fixed">
-        <i 
-            class="fas fa-ellipsis-h cursor-pointer hover:text-red-500 transition dark:text-white"
-            onclick="toggleModeSelector()"
-            title="Toggle dark/light mode"
-        ></i>
-        <div id="mode-selector" class="mode-selector">
-            <button onclick="setMode('light')">☀️</button>
-            <button onclick="setMode('dark')">🌙</button>
-        </div>
-    </div>
-    <body class="bg-white3 font-roboto">
-        <div class="max-w-4xl mx-auto p-4">
-            <div class="bg-white rounded-lg shadow-lg p-4 border-2 border-black">
-                <div class="flex items-center justify-between">
-                    <!-- KIRI: Profile -->
-                    <div class="flex items-center gap-6">
-                        <div class="profile-picture-container relative">
-                            <div class="profile-picture-border"></div>
-                            <img src="./assets/about-pic.png" alt="Vanessa Suharly profile picture" class="w-20 h-20 rounded-full hover:scale-105 transition-transform"/> 
-                        </div>                    <div>
-                            <h1 class="text-2xl font-serif font-semibold">Vanessa Suharly</h1>
-                            <p class="text-sm text-gray-600">Senior Year High School Student</p>
-                        </div>
-                </div>
-                <div class="relative ml-auto">
-                    <i 
-                        class="fas fa-ellipsis-h cursor-pointer hover:text-black-500 transition dark:text-white"
-                        onclick="toggleModeSelector()"
-                        title="Toggle dark/light mode"
-                    ></i>
-                    <div id="mode-selector" class="mode-selector">
-                        <div class="relative">
-                            <span 
-                                id="sun-emoji" 
-                                class="cursor-pointer text-2xl hover:text-black-500 transition"
-                                onclick="toggleTheme()"
-                                title="Toggle dark/light mode"
-                            >☀️</span>
-                            <span 
-                                id="moon-emoji" 
-                                class="cursor-pointer text-2xl hover:text-red-500 transition hidden"
-                                onclick="toggleTheme()"
-                                title="Toggle dark/light mode"
-                            >🌙</span>
-                            <div id="mode-selector" class="mode-selector">
-                                <button onclick="setMode('light')">Light Mode</button>
-                                <button onclick="setMode('dark')">Dark Mode</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-                    <!-- Konten -->
-                </div>  
-            </div>
-            <div id="home" class="page active mt-4">
-                <div class="content-container text-justify bg-white bg-opacity-90 rounded-lg shadow-lg p-6">
-                    <p class="text-white-600 text-center text-lg">Hello, I'm</p>
-                    <h1 class="font-bold text-black text-3xl text-center mb-4">Vanessa Suharly</h1>
-                    <div class="flex justify-center items-center space-x-4 mt-4">
-                        <img alt="Vanessa Suharly profile picture" class="w-36 h-36 md:w-48 md:h-48 rounded-lg border-2 border-black hover:scale-105 transition-transform" src="./assets/about-me-square.png" loading="lazy"/>
-                        <div class="flex flex-col justify-center">
-                            <div class="flex space-x-4 mt-2 resume-contact-container">
-                                <button class="p-2 rounded-lg bg-gray-300 hover:bg-gray-400 transition-colors shadow-md" onclick="window.open('./assets/CV.pdf')">Resume</button>
-                                <button class="p-2 rounded-lg bg-gray-200 hover:bg-gray-400 transition-colors shadow-md" onclick="window.location.href='mailto:vanessa@email.com'">Contact Info</button>
-                            </div>
-                            <div class="flex justify-center space-x-6 mt-4">
-    <a href="//www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-linkedin text-3xl text-black-600 dark:text-white-400 cursor-pointer hover:scale-110 transition-transform"></i>
-    </a>
-    <a href="//github.com/Vasha17" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-github text-3xl text-black dark:text-white cursor-pointer hover:scale-110 transition-transform"></i>
-    </a>
-    <a href="https://www.instagram.com/vasha.74/" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-instagram text-3xl text-black-600 dark:text-white-400 cursor-pointer hover:scale-110 transition-transform"></i>
-    </a>
-</div>
-                        </div>            
-                    </div>
-                    <!-- Academic and Organization Details -->
-                    <div class="about-details-container">
-                        <div class="details-container" onclick="openModal('Academic Focus Grade', '', 'Advanced Mathematics - 87,93,86 | English - 90,92,92 | Informatics - 85,87,98 | Economics - 91,94,92')">
-                            <h3 class="center-text font-bold">Academic Focus</h3>
-                        </div>
-                        <div class="details-container" onclick="openModal('Organization', '', 'Programmer and Designer - Coding Club | Director of Academic Affairs - Student Council/OSIS')">
-                            <h3 class="center-text font-bold">Organization</h3>
-                        </div>
-                    </div>
-                    <p class="mt-4 text-white-700 leading-relaxed">Hi, I'm Vanessa Suharly, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects. Skilled in HTML, C++, and various design tools, I excel at creating functional and user-friendly applications.</p>
-                    <p class="mt-2 text-white-700 leading-relaxed">As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks. I also managed and maintained the school’s website, ensuring smooth functionality and user experience. My leadership as the Director of Academic Affairs in OSIS has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.</p>
-                    <p class="mt-2 text-white-700 leading-relaxed">I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.</p>
-                </div>
-            </div>
-            <div id="experiences" class="page mt-4">
-                <div class="section-header">
-                    <div class="bg-white bg-opacity-75 p-4 rounded-lg mb-4">
-                        <p class="text-sm text-gray-600 mt-2 text-center font text-lg">Explore My</p>
-                        <h1 class="text-2xl font-bold text-black text-center">Competencies</h1>
-                    </div>
-                </div>
-                <div class="experience-details-container flex flex-wrap justify-center gap-4 mb-20">
-                    <div class="details-container bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 text-center">
-                        <h2 class="experience-sub-title font-bold text-lg mb-2">Softwares</h2>
-                        <div class="article-container space-y-2">
-                            <div>
-                                <h3 class="font-semibold">HTML</h3>
-                                <p>Basic</p>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">CSS</h3>
-                                <p>Basic</p>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">Microsoft Office</h3>
-                                <p>Intermediate</p>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">MIT App Inventor</h3>
-                                <p>Intermediate</p>
-                            </div>
-                            <div>
-                                <h3 class="font-semibold">Scratch</h3>
-                                <p>Intermediate</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="details-container bg-white p-4 rounded-lg shadow-md w-full md:w-1/2 text-center">
-                        <h2 class="experience-sub-title font-bold text-lg mb-2">Skills</h2>
-                        <div class="article-container space-y-2">
-                            <div>
-                                <h3 class="font-light">Leadership</h3>
-                            </div>
-                            <div>
-                                <h3 class="font-light">Problem-Solving</h3>
-                            </div>
-                            <div>
-                                <h3 class="font-light">Teamwork</h3>
-                            </div>
-                            <div>
-                                <h3 class="font-light">Adaptability</h3>
-                            </div>
-                            <div>
-                                <h3 class="font-light">Communication</h3>
-                            </div>
-                            <div>
-                                <h3 class="font-light">Time Management</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="projects" class="page mt-4">
-    <div class="bg-white dark:bg-black text-black dark:text-white p-4 rounded-lg mb-5">
-        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2 text-center font text-lg">Browse My Recent</p>
-        <h1 class="text-2xl font-bold text-black dark:text-white text-center">Projects</h1>
-    </div>
-    <div class="about-containers flex flex-wrap justify-center gap-5 mb-10 mt-10">
-        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-            onclick="openModal('WEATHER', 'April 2022 - June 2022', 
-            'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')">
-            <div class="article-container flex justify-center">
-                <img src="./assets/Project-1-me.png" alt="Weather App Project" class="project-img w-44 h-44" loading="lazy"/>
-            </div>
-            <h2 class="experience-sub-title project-title text-center font-bold text-black">WEATHER APP</h2>
-        </div>
 
-        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-            onclick="openModal('CUBE', 'July 2023 - September 2023', 
-            'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game’s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')">
-            <div class="article-container flex justify-center">
-                <img src="./assets/Project-2-me.png" alt="Cube App Project" class="project-img w-44 h-44" loading="lazy"/>
-            </div>
-            <h2 class="experience-sub-title project-title text-center font-bold text-black">CUBE APP</h2>
-        </div>
-
-        <div class="details-container color-container bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md cursor-pointer relative" 
-            onclick="openModal('OFFICIAL WEBSITE', 'August 2024 - Present', 
-            'Until today, I have been actively involved in developing and managing my school’s official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')">
-            <div class="article-container flex justify-center">
-                <img src="./assets/Project-3-me.png" alt="Official School Website Project" class="project-img w-44 h-44" loading="lazy"/>
-            </div>
-            <h2 class="experience-sub-title project-title text-center font-bold text-black">OFFICIAL SCHOOL WEBSITE</h2>
-        </div>
-    </div>
-</div>
-            </div>
-
-            <!-- Modal Structure -->
-            <div id="modal" class="modal" aria-hidden="true">
-                <div class="modal-content w-full max-w-3xl mx-auto"> <!-- Added mx-auto for horizontal centering -->
-                    <span class="close" onclick="closeModal()" aria-label="Close modal">&times;</span>
-                    <h2 id="modal-title" class="text-center text-xl font-bold mb-2"></h2> <!-- Centered title -->
-                    <p id="modal-date" class="text-center text-sm text-gray-600 dark:text-gray-300 mb-4"></p> <!-- Centered date -->
-                    <p id="modal-description" class="text-justify mb-4"></p> <!-- Justified description -->
-                    <img id="modal-image" src="" alt="Project Image" class="w-full h-auto rounded-lg" style="margin-top: 10px;" loading="lazy"/>
+    <!-- Navigation -->
+    <nav class="navbar-glass fixed top-0 left-0 right-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-3xl font-bold text-blue-500 dark:text-blue-400">
+                    <span class="bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text">V</span>asha
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link relative group text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#about" class="nav-link relative group text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#projects" class="nav-link relative group text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                        Projects
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="#contact" class="nav-link relative group text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors">
+                        <i id="sun-icon" class="fas fa-sun hidden"></i>
+                        <i id="moon-icon" class="fas fa-moon"></i>
+                    </button>
+                    
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
-            <div id="contact" class="page mt-4 pb-16"> <!-- Added padding-bottom to the contact section -->
-                <div class="bg-white rounded-lg shadow-lg p-6"> <!-- White box for the contact section -->
-                    <div class="section-header mb-4">
-                        <div class="bg-white bg-opacity-75 p-4 rounded-lg mb-4">
-                            <p class="text-sm text-gray-600 mt-2 text-center font text-lg">Get in Touch</p>
-                            <h1 class="text-2xl font-bold text-black text-center">Contact Me</h1>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-slate-800 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-1/2 hero-content">
+                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-black dark:text-black">
+                        Hi, I'm <span class="text-blue-500">Vanessa</span> 
+                        <span class="wave-animation inline-block">👋</span>
+                    </h1>
+                    <p class="hero-description text-lg mb-2 text-black-600 dark:text-black-400 max-w-lg mx-auto md:mx-0 text-center">
+                        Senior High School Student & Aspiring Developer.
+                    </p>
+                    <p class="hero-description text-lg mb-8 text-black-600 dark:text-black-400 max-w-lg mx-auto md:mx-0 text-justify">
+                        Passionate about creating digital solutions and exploring new technologies. Currently focused on web development and software engineering.
+                    </p>
+                    
+                    <div class="hero-buttons flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow">
+                            Contact Me
+                        </a>
+                        <a href="#" class="px-6 py-3 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
+                            Download CV
+                        </a>
+                    </div>
+                    <div class="mt-8 flex justify-center md:center-start space-x-1 mb-2">
+                        <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center hero-image-container pb-10">
+                    <div class="relative floating max-w-xs w-full aspect-square flex items-center justify-center">
+                        <img src="./assets/about-me-square.png"
+                             alt="Vanessa Suharly"
+                             class="w-full h-full object-contain rounded-full border-4 border-white dark:border-slate-800 shadow-xl bg-white dark:bg-slate-800" />
+                        <div class="absolute -inset-4 border-4 border-blue-500 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-md">
+                            <span class="text-blue-500 font-medium">Currently Learning:</span>
+                            <span class="text-gray-600 dark:text-gray-300">HTML, CSS, JS</span>
                         </div>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <div class="bg-white shadow-md rounded-lg p-6 mb-6 w-full max-w-md">
-                            <h2 class="text-xl font-semibold text-center mb-4">Contact Information</h2>
-                            <div class="flex items-center mb-4">
-                                <i class="fas fa-envelope w-6 h-6 text-black-600 dark:text-whit-400 mr-2"></i>
-                                <p class="text-gray-700"><a href="mailto:vanessa.sha75@gmail.com" class="hover:underline">Vanessa.sha75@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-20 bg-white dark:bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-blue-500">Me</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Here you'll find more information about me, my skills, and my academic journey.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">Get to know me!</h3>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-300 text-justify">
+                        <p>
+                            I'm <span class="font-medium text-blue-500">Vanessa Suharly</span>, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects.
+                        </p>
+                        <p>
+                            Skilled in <span class="font-medium">HTML, C++</span>, and various design tools, I excel at creating functional and user-friendly applications. As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks.
+                        </p>
+                        <p>
+                            My leadership as the <span class="font-medium">Director of Academic Affairs in OSIS</span> has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.
+                        </p>
+                        <p>
+                            I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.
+                        </p>
+                    </div>
+                    
+                    <a href="#contact" class="mt-8 inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Contact Me
+                    </a>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">My <span class="text-blue-500">Skills</span></h3>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4">Technical Skills</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>HTML</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
+                                </div>
                             </div>
-                            <div class="flex items-center mb-4">
-                                <i class="fab fa-linkedin w-6 h-6 text-black-600 dark:text-white-400 mr-2"></i>
-                                <p class="text-gray-700"><a href="//www.linkedin.com/in/vanessa-suharly-370a59354/" class="hover:underline">LinkedIn Profile</a></p>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>CSS</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 60%"></div>
+                                </div>
                             </div>
-                            <div class="flex items-center mb-4">
-                                <i class="fab fa-github w-6 h-6 text-black-800 dark:text-white-200 mr-2"></i>
-                                <p class="text-gray-700"><a href="//github.com/Vasha17" class="hover:underline">GitHub Profile</a></p>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>JavaScript</span>
+                                    <span>40%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 40%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>MIT App Inventor</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
+                                </div>
+                             </div>
+                             <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Scratch</span>
+                                    <span>70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
+                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
+                                </div>
+                            </div>
+                                                  </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium mb-4">Soft Skills</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Leadership</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Problem Solving</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Teamwork</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Communication</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Adaptability</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Time Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('Academic Focus Grade', '', '| Advanced Mathematics - 87,93,86 <p> | English - 90,92,92 <p> | Informatics - 85,87,98 <p> | Economics - 91,94,92')">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold">Academic Focus</h4>
+                            </div>
+                            <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my academic performance in key subjects</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('Organization', '', '| Programmer and Designer - Coding Club <p> | Director of Academic Affairs - Student Council/OSIS')">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center text-orange-500 dark:text-orange-400">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold">Organization</h4>
+                            </div>
+                            <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my organizational involvement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section py-20 bg-gray-50 dark:bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My <span class="text-blue-500">Projects</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Here are some of my recent projects. Each project has its own story and challenges.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/Project-1-me.png" alt="Weather App" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-white text-xl font-semibold">Weather App</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-blue-500"><i>April 2022 - June 2022</i></span>
+                            <div class="flex space-x-2">
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">MIT App Inventor</span>
                             </div>
                         </div>
-                        <form action="https://formsubmit.co/vanessa.sha75@gmail.com" method="POST" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mb-12">
-                            <h2 class="text-xl font-semibold text-center mb-4">Send Me a Message</h2>
-                        
-                            <div class="mb-4">
-                                <label for="name" class="block text-gray-700">Name</label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
-                                    autocomplete="name" 
-                                    required 
-                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                                />
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                            My first project where I learned to fetch and display weather data, design interfaces, and troubleshoot errors.
+                        </p>
+                        <button onclick="openModal('WEATHER APP', 'April 2022 - June 2022', 'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+                            View Details <i class="fas fa-arrow-right ml-2 text-justify"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/Project-2-me.png" alt="Cube Game" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-white text-xl font-semibold">Cube Game</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-blue-500"><i>July 2023 - September 2023</i></span>
+                            <div class="flex space-x-2">
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Scratch</span>
+                                <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">Game Dev</span>
                             </div>
-                        
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700">Email</label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    autocomplete="email" 
-                                    required 
-                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
-                                />
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                            A platformer game where players leap across platforms within a time limit, built with Scratch.
+                        </p>
+                        <button onclick="openModal('CUBE GAME', 'July 2023 - September 2023', 'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the games logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+                            View Details <i class="fas fa-arrow-right ml-2 text-justify"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative overflow-hidden h-48">
+                        <img src="./assets/Project-3-me.png" alt="School Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-white text-xl font-semibold">School Website</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-blue-500"><i>August 2024 - Present</i></span>
+                            <div class="flex space-x-2">
+                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">HTML/CSS</span>
+                                <span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Team Project</span>
                             </div>
-                        
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700">Message</label>
-                                <textarea 
-                                    id="message" 
-                                    name="message" 
-                                    autocomplete="on" 
-                                    rows="4" 
-                                    required 
-                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                ></textarea>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                            Development and maintenance of my school's official website as part of a collaborative team.
+                        </p>
+                        <button onclick="openModal('SCHOOL WEBSITE', 'August 2024 - Present', 'Until today, I have been actively involved in developing and managing my schools official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+                            View Details <i class="fas fa-arrow-right ml-2" text-justify></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-20 bg-white dark:bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In <span class="text-blue-500">Touch</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Feel free to reach out if you're looking for a collaborator, have a question, or just want to connect.
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">Contact <span class="text-blue-500">Information</span></h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mt-1">
+                                <i class="fas fa-envelope text-xl"></i>
                             </div>
-                        <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form">
-                        <input type="hidden" name="_captcha" value="false">
-                        <button 
-                            type="submit" 
-                            class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
-                        >
+                            <div>
+                                <h4 class="font-medium text-lg">Email</h4>
+                                <a href="mailto:vanessa.sha75@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                                    vanessa.sha75@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mt-1">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                                    linkedin.com/in/vanessa-suharly
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mt-1">
+                                <i class="fab fa-github text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">GitHub</h4>
+                                <a href="https://github.com/Vasha17" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                                    github.com/Vasha17
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mt-1">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-lg">Instagram</h4>
+                                <a href="https://www.instagram.com/vasha.74/" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                                    @vasha.74
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-medium text-lg mb-4">Let's Connect</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6">Send <span class="text-blue-500">a Message</span></h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium">Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 text-sm font-medium">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Send Message
                         </button>
-                    </form>                        
+                    </form>
                 </div>
             </div>
-        </div>       
-    </div>
-</div>
-<script>
-window.onload = () => {
-if (localStorage.getItem('theme') === 'dark') {
-  document.documentElement.classList.add('dark');
-}
-};
+        </div>
+    </section>
 
-// Fungsi toggle
-function toggleDarkMode() {
-const html = document.documentElement;
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-600 dark:text-gray-300">
+                &copy; 2024 Vanessa Suharly. All rights reserved.
+            </p>
+            <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">
+                Designed and developed with ❤️ by Vanessa
+            </p>
+        </div>
+    </footer>
 
-function toggleDarkMode() {
-console.log("Toggle clicked!");
-}
-
-if (html.classList.contains('dark')) {
-  html.classList.remove('dark');
-  localStorage.setItem('theme', 'light');
-} else {
-  html.classList.add('dark');
-  localStorage.setItem('theme', 'dark');
-}
-}
-    function openModal(title, date, description, imageSrc) {
-        document.getElementById('modal-title').innerText = title;
-        document.getElementById('modal-date').innerText = date;
-        document.getElementById('modal-description').innerText = description;
-
-         // Handle image display
-        const modalImage = document.getElementById('modal-image');
-        if (imageSrc) {
-            modalImage.src = imageSrc;
-            modalImage.style.display = 'block'; // Show image if source exists
-        } else {
-            modalImage.style.display = 'none'; // Hide image if no source
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        
+        // Mobile Menu Functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Set initial theme based on user preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
         }
-        document.getElementById('modal').style.display = 'flex'; // Show modal
-        document.getElementById('modal').setAttribute('aria-hidden', 'false'); // Update aria attribute
-    }
-
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none'; // Hide modal
-        document.getElementById('modal').setAttribute('aria-hidden', 'true'); // Update aria attribute
-    }
-
-    // Ensure modal is hidden on page load
-    window.onload = function() {
-        document.getElementById('modal').style.display = 'none'; // Hide modal on load
-    };
-
-    window.onclick = function(event) {
-        const modal = document.getElementById('modal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    }
-
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
+        
+        // Theme toggle functionality
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+                localStorage.setItem('darkMode', 'false');
+            }
         });
-        const page = document.getElementById(pageId);
-        if (page) {
-            page.classList.add('active');
-        }
-
-        // Update active icon
-        document.querySelectorAll('.icon').forEach(icon => {
-            icon.classList.remove('active');
+        
+        // Mobile menu functionality
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-        const activeIcon = document.querySelector(`.icon[onclick="showPage('${pageId}')"]`);
-        if (activeIcon) {
-            activeIcon.classList.add('active');
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        
+        // Modal Functionality
+        function openModal(title, date, description, imageUrl) {
+            // Create modal structure
+            const modalHTML = `
+            <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+                <div class="modal-content bg-white dark:bg-slate-800 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl font-bold">${title}</h3>
+                            <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        ${date ? `<p class="text-blue-500 mb-4">${date}</p>` : ''}
+                        
+                        ${imageUrl ? `
+                        <div class="mb-6">
+                            <img src="${imageUrl}" alt="${title}" class="w-full rounded-lg shadow-lg">
+                        </div>
+                        ` : ''}
+                        
+                        <div class="prose dark:prose-invert max-w-none">
+                            <p class="text-gray-600 dark:text-gray-300 text-justify">${description}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            
+            // Insert modal into DOM
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Show modal with animation
+            setTimeout(() => {
+                const modal = document.getElementById('modal');
+                modal.classList.add('opacity-100');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            }, 10);
+            
+            // Close modal functionality
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside content
+            document.getElementById('modal').addEventListener('click', (e) => {
+                if (e.target.id === 'modal') {
+                    closeModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
         }
-    }
-</script>
+        
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.remove('opacity-100');
+                modal.querySelector('.modal-content').classList.add('scale-95');
+                
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            }
+        }
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for Section Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Floating Action Button - Scroll to Top
+        const fabButton = document.createElement('button');
+        fabButton.className = 'fab-button w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center shadow-lg glow';
+        fabButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        fabButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        document.body.appendChild(fabButton);
+        
+        // Show/hide FAB based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                fabButton.style.display = 'flex';
+            } else {
+                fabButton.style.display = 'none';
+            }
+        });
+        
+        // Initialize - hide FAB initially
+        fabButton.style.display = 'none';
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
-
