@@ -43,6 +43,17 @@
             scroll-behavior: smooth;
         }
         
+/* Dark Mode Adjustments */
+.dark body {
+    background-color: #000; /* Black background in dark mode */
+    color: #fff; /* White text in dark mode */
+}
+/* Light Mode Adjustments */
+.light body {
+    background-color: #fff; /* White background in light mode */
+    color: #000; /* Black text in light mode */
+}
+
         /* Animated background for hero section */
         .hero-bg {
             background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(245,158,11,0.1) 100%);
@@ -60,11 +71,6 @@
             background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
             z-index: -1;
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         
         /* Floating animation */
@@ -277,7 +283,7 @@
                 max-width: 300px;
                 margin: 0 auto;
             }
-        }
+        
         
     </style>
 
@@ -340,56 +346,57 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg min-h-screen flex items-center justify-center px-6">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
-                <div class="md:w-1/2 hero-content">
-                    <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-black dark:text-black">
-                        Hi, I'm <span class="text-blue-500">Vanessa</span> 
-                        <span class="wave-animation inline-block">👋</span>
-                    </h1>
-                    <p class="hero-description text-lg mb-2 text-black-600 dark:text-black-400 max-w-lg mx-auto md:mx-0 text-center">
-                        Senior High School Student & Aspiring Developer.
-                    </p>
-                    <p class="hero-description text-lg mb-8 text-black-600 dark:text-black-400 max-w-lg mx-auto md:mx-0 text-justify">
-                        Passionate about creating digital solutions and exploring new technologies. Currently focused on web development and software engineering.
-                    </p>
-                    
-                    <div class="hero-buttons flex flex-wrap gap-4 justify-center md:justify-start">
-                        <a href="#contact" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow">
-                            Contact Me
-                        </a>
-                        <a href="#" class="px-6 py-3 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105">
-                            Download CV
-                        </a>
-                    </div>
-                    <div class="mt-8 flex justify-center md:center-start space-x-1 mb-2">
-                        <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+<section id="home" class="hero-bg min-h-screen flex items-center justify-center px-6">
+    <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="md:w-1/2 hero-content">
+                <h1 class="hero-title text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-black dark:text-white">
+                    Hi, I'm <span class="text-blue-500">Vanessa</span> 
+                    <span class="wave-animation inline-block">👋</span>
+                </h1>
+                <p class="hero-description text-lg mb-2 text-black-600 dark:text-gray-300 max-w-lg mx-auto md:mx-0 text-center">
+                    Senior High School Student & Aspiring Developer.
+                </p>
+                <p class="hero-description text-lg mb-8 text-black-600 dark:text-gray-300 max-w-lg mx-auto md:mx-0 text-justify">
+                    Passionate about creating digital solutions and exploring new technologies. Currently focused on web development and software engineering.
+                </p>
+                
+                <div class="hero-buttons flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="mailto:vanessa@email.com" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow">
+                        Contact Info
+                    </a>
+                    <a href="./assets/CV.pdf" class="px-6 py-3 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105" target="_blank">
+                        Download CV
+                    </a>
                 </div>
-                <div class="md:w-1/2 flex justify-center hero-image-container pb-10">
-                    <div class="relative floating max-w-xs w-full aspect-square flex items-center justify-center">
-                        <img src="./assets/about-me-square.png"
-                             alt="Vanessa Suharly"
-                             class="w-full h-full object-contain rounded-full border-4 border-white dark:border-slate-800 shadow-xl bg-white dark:bg-slate-800" />
-                        <div class="absolute -inset-4 border-4 border-blue-500 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-md">
-                            <span class="text-blue-500 font-medium">Currently Learning:</span>
-                            <span class="text-gray-600 dark:text-gray-300">HTML, CSS, JS</span>
-                        </div>
+                <div class="mt-8 flex justify-center md:center-start space-x-1 mb-2">
+                    <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center hero-image-container pb-10">
+                <div class="relative floating max-w-xs w-full aspect-square flex items-center justify-center">
+                    <img src="./assets/about-me-square.png"
+                         alt="Vanessa Suharly"
+                         class="w-full h-full object-contain rounded-full border-4 border-white dark:border-slate-800 shadow-xl bg-white dark:bg-slate-800" />
+                    <div class="absolute -inset-4 border-4 border-blue-500 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-md">
+                        <span class="text-blue-500 font-medium">Currently Learning:</span>
+                        <span class="text-gray-600 dark:text-gray-300">HTML, CSS, JS</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- About Section -->
     <section id="about" class="section py-20 bg-white dark:bg-black">
@@ -492,25 +499,39 @@
                     </div>
                     
                     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('Academic Focus Grade', '', '| Advanced Mathematics - 87,93,86 <p> | English - 90,92,92 <p> | Informatics - 85,87,98 <p> | Economics - 91,94,92')">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400">
-                                    <i class="fas fa-graduation-cap text-xl"></i>
-                                </div>
-                                <h4 class="font-semibold">Academic Focus</h4>
-                            </div>
-                            <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my academic performance in key subjects</p>
-                        </div>
-                        
-                        <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('Organization', '', '| Programmer and Designer - Coding Club <p> | Director of Academic Affairs - Student Council/OSIS')">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center text-orange-500 dark:text-orange-400">
-                                    <i class="fas fa-users text-xl"></i>
-                                </div>
-                                <h4 class="font-semibold">Organization</h4>
-                            </div>
-                            <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my organizational involvement</p>
-                        </div>
+    <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+        onclick="openModal(
+            'Academic Focus Grade',
+            '',
+            `| Advanced Mathematics - 87,93,86 <p> | English - 90,92,92 <p> | Informatics - 85,87,98 <p> | Economics - 91,94,92 
+                <p><a href='./assets/TRANSCRIPT SCORE TRANSLATED.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> View Transcript </a>`
+        )"
+    >
+        <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400">
+                <i class="fas fa-graduation-cap text-xl"></i>
+            </div>
+            <h4 class="font-semibold">Academic Focus</h4>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my academic performance in key subjects</p>
+    </div>
+
+    <div class="bg-gray-50 dark:bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
+        onclick="openModal('Organization', '', 
+        `| Programmer and Designer - Coding Club <p><i class='text-blue-500'>July 2024 - Present</i></p> 
+         | Content Creator - Broadcasting <p><i class='text-blue-500'>August 2022 - June 2024</i></p> 
+         | Director of Academic Affairs - Student Council/OSIS <p><i class='text-blue-500'>November 2022 - November 2023</i></p> 
+         <p><a href='./assets/CV.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> Leadership & Extracurricular Track Record </a>`)"
+    >
+
+        <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center text-orange-500 dark:text-orange-400">
+                <i class="fas fa-users text-xl"></i>
+            </div>
+            <h4 class="font-semibold">Organization</h4>
+        </div>
+        <p class="mt-3 text-sm text-gray-600 dark:text-gray-400">Click to view my organizational involvement</p>
+    </div>
                     </div>
                 </div>
             </div>
@@ -530,76 +551,102 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="./assets/Project-1-me.png" alt="Weather App" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                            <h3 class="text-white text-xl font-semibold">Weather App</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-blue-500"><i>April 2022 - June 2022</i></span>
-                            <div class="flex space-x-2">
-                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">MIT App Inventor</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                            My first project where I learned to fetch and display weather data, design interfaces, and troubleshoot errors.
-                        </p>
-                        <button onclick="openModal('WEATHER APP', 'April 2022 - June 2022', 'Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.', './assets/Project-1-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
-                            View Details <i class="fas fa-arrow-right ml-2 text-justify"></i>
-                        </button>
-                    </div>
-                </div>
+<div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <div class="relative overflow-hidden h-48">
+        <img src="./assets/Project-1-me.png" alt="Weather App" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+            <h3 class="text-white text-xl font-semibold">Weather App</h3>
+        </div>
+    </div>
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-blue-500 italic">April 2022 - June 2022</span>
+            <div class="flex space-x-2">
+                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">MIT App Inventor</span>
+            </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-justify">
+            My first project where I learned to fetch and display weather data, design interfaces, and troubleshoot errors.
+        </p>
+        <button onclick="openModal(
+            'WEATHER APP',
+            'April 2022 - June 2022',
+            `<span class='text-blue-500'>Technology:</span> MIT App Inventor<br>
+            <span class='text-blue-500'>Role:</span> Developer & Designer<br>
+            <span class='text-justify'>Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.</span><br>
+            <a href='https://drive.google.com/file/d/1f6q31cJeHojBVVi2eKDSXCIfF42HJtbQ/view?usp=sharing' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'>Download Weather App (.apk) &mdash; via Google Drive</a>`,
+            './assets/Project-1-me.png'
+        )" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+    </div>
+</div>
                 
                 <!-- Project 2 -->
-                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="./assets/Project-2-me.png" alt="Cube Game" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                            <h3 class="text-white text-xl font-semibold">Cube Game</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-blue-500"><i>July 2023 - September 2023</i></span>
-                            <div class="flex space-x-2">
-                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Scratch</span>
+<div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <div class="relative overflow-hidden h-48">
+        <img src="./assets/Project-2-me.png" alt="CUBE Game" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+            <h3 class="text-white text-xl font-semibold">CUBE Game</h3>
+        </div>
+    </div>
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-blue-500 italic">July 2023 - September 2023</span>
+            <div class="flex space-x-2">
+                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Scratch</span>
                                 <span class="text-xs px-2 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">Game Dev</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                            A platformer game where players leap across platforms within a time limit, built with Scratch.
-                        </p>
-                        <button onclick="openModal('CUBE GAME', 'July 2023 - September 2023', 'Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the games logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.', './assets/Project-2-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
-                            View Details <i class="fas fa-arrow-right ml-2 text-justify"></i>
-                        </button>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-justify">
+             A platformer game where players leap across platforms within a time limit, built with Scratch.
+        </p>
+        <button onclick="openModal(
+            'CUBE GAME',
+            'July 2023 - September 2023',
+            '&lt;span class=\'text-blue-500\'&gt;Technology:&lt;/span&gt; Scratch&lt;br&gt;' +
+            '&lt;span class=\'text-blue-500\'&gt;Role:&lt;/span&gt; Lead Game Designer &amp; Programmer&lt;br&gt;' +
+            '&lt;span class=\'text-justify\'&gt;Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game\'s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.&lt;/span&gt;&lt;br&gt;' +
+            '&lt;a href=\'https://scratch.mit.edu/projects/1050833889\' class=\'mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105\' target=\'_blank\'&gt;View  My Game &quot;CUBE&quot; &amp;mdash; on Scratch&lt;/a&gt;',
+            './assets/Project-2-me.png'
+        )" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+    </div>
+</div>
                 
                 <!-- Project 3 -->
-                <div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="relative overflow-hidden h-48">
-                        <img src="./assets/Project-3-me.png" alt="School Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                            <h3 class="text-white text-xl font-semibold">School Website</h3>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-blue-500"><i>August 2024 - Present</i></span>
-                            <div class="flex space-x-2">
-                                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">HTML/CSS</span>
+<div class="project-card bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+    <div class="relative overflow-hidden h-48">
+        <img src="./assets/Project-3-me.png" alt="School Website" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+            <h3 class="text-white text-xl font-semibold">School Website</h3>
+        </div>
+    </div>
+    <div class="p-6">
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-blue-500 italic">August 2024 - Present</span>
+            <div class="flex space-x-2">
+                <span class="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">HTML/CSS</span>
                                 <span class="text-xs px-2 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Team Project</span>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                            Development and maintenance of my school's official website as part of a collaborative team.
-                        </p>
-                        <button onclick="openModal('SCHOOL WEBSITE', 'August 2024 - Present', 'Until today, I have been actively involved in developing and managing my schools official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.', './assets/Project-3-me.png')" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
-                            View Details <i class="fas fa-arrow-right ml-2" text-justify></i>
-                        </button>
+            </div>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-justify">
+             Development and maintenance of my school's official website as part of a collaborative team.
+        </p>
+        <button onclick="openModal(
+            'SCHOOL WEBSITE',
+            'August 2024 - Present',
+            '&lt;span class=\'text-blue-500\'&gt;Built With:&lt;/span&gt; HTML | CSS &lt;br&gt;' +
+            '&lt;span class=\'text-blue-500\'&gt;Role:&lt;/span&gt; Site Organizer &amp; Website Manager.&lt;br&gt;' +
+            '&lt;span class=\'text-justify\'&gt;Until today, I have been actively involved in developing and managing my schools official website as part of a team. This experience has been incredibly valuable, as I have learned about teamwork, brainstorming ideas, and problem-solving in a collaborative environment. Working with a team has also taught me how to handle different perspectives and integrate feedback effectively. Additionally, I have gained experience in data analysis by managing website traffic and improving user engagement. Since the website is built using HTML, I have improved my front-end development skills while understanding how a structured website functions in a real-world setting.&lt;/span&gt;&lt;br&gt;' +
+            '&lt;a href=\'https://bhaktiwiyata.smastrada.sch.id\' class=\'mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105\' target=\'_blank\'&gt;Check Out &mdash;  Strada Bhakti Wiyata Official Website&lt;/a&gt;',
+            './assets/Project-3-me.png'
+        )" class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium flex items-center transition-colors">
+            View Details <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+    </div>
+</div>
                     </div>
                 </div>
             </div>
@@ -687,25 +734,54 @@
                     </div>
                 </div>
                 
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">Send <span class="text-blue-500">a Message</span></h3>
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block mb-2 text-sm font-medium">Name</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-                        </div>
-                        <div>
-                            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
-                        </div>
-                        <div>
-                            <label for="message" class="block mb-2 text-sm font-medium">Message</label>
-                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
-                        </div>
-                        <button type="submit" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <form action="https://formsubmit.co/vanessa.sha75@gmail.com" method="POST" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md mb-12">
+                            <h2 class="text-xl font-semibold text-center mb-4">Send Me a Message</h2>
+                        
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700">Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    autocomplete="name" 
+                                    required 
+                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                />
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700">Email</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    autocomplete="email" 
+                                    required 
+                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                                />
+                            </div>
+                        
+                            <div class="mb-4">
+                                <label for="message" class="block text-gray-700">Message</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    autocomplete="on" 
+                                    rows="4" 
+                                    required 
+                                    class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                ></textarea>
+                            </div>
+                        <input type="hidden" name="_subject" value="New Message from Portfolio Contact Form">
+                        <input type="hidden" name="_captcha" value="false">
+                        <button 
+                            type="submit" 
+                            class="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
+                        >
                             Send Message
                         </button>
-                    </form>
+                    </form>                        
+                </div>
                 </div>
             </div>
         </div>
@@ -715,7 +791,7 @@
     <footer class="py-8 bg-gray-100 dark:bg-slate-800 border-t border-gray-200 dark:border-slate-700">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-600 dark:text-gray-300">
-                &copy; 2024 Vanessa Suharly. All rights reserved.
+                &copy; 2025 Vanessa Suharly. All rights reserved.
             </p>
             <p class="mt-2 text-gray-500 dark:text-gray-400 text-sm">
                 Designed and developed with ❤️ by Vanessa
@@ -907,6 +983,7 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+        
     </script>
 </body>
 </html>
