@@ -1334,8 +1334,10 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
     
     // Floating Action Button - Scroll to Top
+if (!document.getElementById('fab-scroll-top')) {
     const fabButton = document.createElement('button');
-    fabButton.className = 'fab-button w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center shadow-lg glow';
+    fabButton.id = 'fab-scroll-top';
+    fabButton.className = 'fab-button fixed bottom-4 right-4 md:relative md:bottom-auto md:right-auto w-14 h-14 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center shadow-lg glow';
     fabButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
     fabButton.addEventListener('click', () => {
         window.scrollTo({
@@ -1344,8 +1346,23 @@ document.querySelectorAll('.nav-link').forEach(link => {
         });
     });
     
-    document.body.appendChild(fabButton);
+    // Find footer element
+    const footer = document.querySelector('footer');
     
+    if (footer) {
+        // Create container for FAB in footer
+        const fabContainer = document.createElement('div');
+        fabContainer.className = 'fab-container md:absolute md:bottom-4 md:right-4';
+        fabContainer.appendChild(fabButton);
+        
+        // Add to footer (position relative needed for absolute positioning)
+        footer.style.position = 'relative';
+        footer.appendChild(fabContainer);
+    } else {
+        // Fallback if no footer found
+        document.body.appendChild(fabButton);
+    }
+
     // Show/hide FAB based on scroll position
     window.addEventListener('scroll', () => {
         if (window.scrollY > 500) {
@@ -1357,7 +1374,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     
     // Initialize - hide FAB initially
     fabButton.style.display = 'none';
-
+}
     // Close mobile menu when clicking a link
     document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
         link.addEventListener('click', () => {
