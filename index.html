@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,37 +25,6 @@
             box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
         }
 
-        /* Underline wave under 'A' in logo, visible on all screens */
-        .wave-under-A {
-            display: block;
-            position: absolute;
-            left: 92px;
-            bottom: -20px;
-            width: 150px;
-            height: 40px;
-            background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 25 Q 40 10, 80 25 T 160 25' stroke='%233b82f6' fill='transparent' stroke-width='3'/><circle cx='170' cy='25' r='2' fill='%233b82f6' /><path id='left-wing' d='M170 25 C165 15, 160 15, 158 25 C160 35, 165 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; -15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path><path id='right-wing' d='M170 25 C175 15, 180 15, 182 25 C180 35, 175 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; 15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path></svg>");
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: waveUnderlineMove 2s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @media (max-width: 767px) {
-            .wave-under-A {
-                left: 54px;
-                bottom: -14px;
-                width: 90px;
-                height: 24px;
-            }
-        }
-        @keyframes waveUnderlineMove {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(4px);
-            }
-        }
-
 
         /* Wave underline for nav links (both desktop and mobile) */
     /* Glass effect for navbar */
@@ -72,36 +42,7 @@
             box-shadow: 0 8px 32px 0 rgba(0,0,0,0.28);
         }
 
-        /* Underline wave under 'A' in logo, visible on all screens */
-        .wave-under-A {
-            display: block;
-            position: absolute;
-            left: 92px;
-            bottom: -20px;
-            width: 150px;
-            height: 40px;
-            background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 25 Q 40 10, 80 25 T 160 25' stroke='%233b82f6' fill='transparent' stroke-width='3'/><circle cx='170' cy='25' r='2' fill='%233b82f6' /><path id='left-wing' d='M170 25 C165 15, 160 15, 158 25 C160 35, 165 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; -15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path><path id='right-wing' d='M170 25 C175 15, 180 15, 182 25 C180 35, 175 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; 15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path></svg>");
-            background-size: contain;
-            background-repeat: no-repeat;
-            animation: waveUnderlineMove 2s ease-in-out infinite;
-            pointer-events: none;
-        }
-        @media (max-width: 767px) {
-            .wave-under-A {
-                left: 54px;
-                bottom: -14px;
-                width: 90px;
-                height: 24px;
-            }
-        }
-        @keyframes waveUnderlineMove {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(4px);
-            }
-        }
+       
 
         /* Navbar link underline wave animation (desktop only) */
         @media (min-width: 768px) {
@@ -349,7 +290,7 @@
         .wave-abstract-2 {
             bottom: -5%;
         }
-
+    }
         
 /* V hover effect */
 .v-part {
@@ -361,28 +302,10 @@
     transform: scale(1.1);
     color: #2563eb;
 }
-
-.wave-under-A {
-    position: absolute;
-    left: 92px; /* Sesuaikan posisinya */
-    bottom: -20px;
-    width: 150px;
-    height: 40px;
-    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 40' xmlns='http://www.w3.org/2000/svg'><path d='M0 25 Q 40 10, 80 25 T 160 25' stroke='%233b82f6' fill='transparent' stroke-width='3'/><circle cx='170' cy='25' r='2' fill='%233b82f6' /><path id='left-wing' d='M170 25 C165 15, 160 15, 158 25 C160 35, 165 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; -15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path><path id='right-wing' d='M170 25 C175 15, 180 15, 182 25 C180 35, 175 35, 170 25' fill='%2361a5fa' stroke='%233b82f6' stroke-width='1'><animateTransform attributeName='transform' type='rotate' values='0 170 25; 15 170 25; 0 170 25' dur='1s' repeatCount='indefinite'/></path></svg>");
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: waveUnderlineMove 2s ease-in-out infinite;
-    pointer-events: none;
-}
-
-        /* Wave animation */
-        @keyframes waveUnderlineMove {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(4px);
-            }
+        /* Wave underline for nav links (both desktop and mobile) */
+        .nav-link {
+            position: relative; /* Important */
+            display: inline-block;
         }
 
         /* Animated background for hero section */
@@ -478,18 +401,6 @@
             box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
         }
         
-        /* Skill bar animation */
-        @keyframes fill {
-            from { width: 0; }
-            to { width: var(--skill-level); }
-        }
-        
-        .skill-bar-fill {
-            animation: fill 1.5s ease-out forwards;
-            height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
         
         /* Typewriter effect */
         .typewriter {
@@ -659,14 +570,13 @@
     <nav class="navbar-glass fixed top-0 left-0 right-0 z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-3xl font-bold text-blue-500 dark:text-blue-400">
+                <div class="text-4xl font-bold text-blue-500 dark:text-blue-400">
                     <span class="relative inline-block">
                         <span class="bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text">V</span>asha
-                        <div class="wave-under-A"></div>
                     </span>
                 </div>
-                
-                <div class="hidden md:flex space-x-8">
+
+                <div class="hidden md:flex ml-auto space-x-8 justify-start items-center flex-40">
                     <a href="#home" class="nav-link relative group text-white hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
                         Home
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"></span>
@@ -686,9 +596,7 @@
                 </div>
                 
                 <div class="flex items-center space-x-4">
-                    <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors">
-                        <i id="sun-icon" class="fas fa-sun hidden"></i>
-                        <i id="moon-icon" class="fas fa-moon"></i>
+                    <button id="theme-toggle"
                     </button>
                     
                     <button id="mobile-menu-button" class="md:hidden p-2 rounded-full bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors">
@@ -713,33 +621,45 @@
 <!-- Hero Section with Inverted Wave Design -->
 <section id="home" class="min-h-screen flex items-center justify-center px-6 relative bg-gradient-to-b from-blue-50 to-white dark:from-slate-900 dark:to-slate-800">
     <div class="hero-wave-bg">
-        <div class="hero-wave wave-abstract-1"></div>
-        <div class="hero-wave wave-abstract-2"></div>
-        <div class="hero-wave wave-abstract-3"></div>
-    </div>
+    <div class="hero-wave wave-abstract-1"></div>
+    <div class="hero-wave wave-abstract-2"></div>
+    <div class="hero-wave wave-abstract-3"></div>
+</div>
 <div class="container mx-auto">
         <div class="flex flex-col md:flex-row items-center justify-between gap-12">
             <div class="md:w-1/2 hero-content">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white light:text-black dark:text-white">
-                    Hi, I'm <span class="text-blue-500">Vanessa</span>
-                     <span class="wave-animation inline-block">👋</span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white light:text-black dark:text-white">
+                                        Hi, I'm <span class="bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text">V</span><span class="text-blue-500">anessa</span>
                 </h1> 
-                <p class="hero-description text-lg mb-2 text-white max-w-lg mx-auto md:mx-0 text-center">
-                    Senior High School Student & Aspiring Developer.
-                </p>
+                <div class="hero-description text-lg mb-8 text-white max-w-lg mx-auto md:mx-0 text-justify-center">
+                    <div class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text animate-gradient">
+                    <span class="inline-block">
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">A</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">s</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">p</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">i</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">r</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">i</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">n</span>
+                    <span class="inline-block hover:scale-110 transition-transform duration-300">g</span>
+                    </span>
+    <span class="inline-block hover:scale-110 transition-transform duration-300"> Developer</span>
+                    </div>
+
                 <p class="hero-description text-lg mb-8 text-white max-w-lg mx-auto md:mx-0 text-justify">
                     Passionate about creating digital solutions and exploring new technologies. Currently focused on web development and software engineering.
                 </p>
                 
-                <div class="hero-buttons flex flex-wrap gap-4 justify-center md:justify-start">
+                <div class="hero-buttons flex flex-row flex-wrap gap-4 justify-center md:justify-start">
                     <a href="mailto:vanessa@email.com" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow">
                         Contact Info
                     </a>
-                    <a href="./assets/CV.pdf" class="px-6 py-3 bg-slate-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow" target="_blank">
+                    <a href="/assets/CV.pdf" class="px-6 py-3 bg-slate-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow" target="_blank">
                         Download CV
                     </a>
                 </div>
-                 <div class="mt-8 flex justify-center md:center-start space-x-1 mb-2">
+                
+                 <div class="mt-8 flex justify-center md:justify-start items-center space-x-3 mb-2">
                     <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
@@ -751,13 +671,14 @@
                     </a>
                 </div>
             </div>
+            </div>
             <div class="md:w-1/2 flex justify-center hero-image-container pb-10">
                 <div class="relative floating max-w-xs w-full aspect-square flex items-center justify-center">
                     <img src="./assets/ID.jpg"
                          alt="Vanessa Suharly"
                          class="w-full h-full object-contain rounded-full border-4 border-white dark:border-slate-800 shadow-xl bg-white dark:bg-slate-800" />
                     <div class="absolute -inset-4 border-4 border-blue-500 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-md">
+                    <div class="absolute -bottom-6 -right-1 bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-md">
                         <span class="text-blue-500 font-medium">Currently Learning:</span>
                         <span class="text-gray-600 dark:text-gray-300">HTML, CSS, JS</span>
                     </div>
@@ -769,146 +690,132 @@
 
 
     <!-- About Section -->
-    <section id="about" class="section py-20 bg-black text-white">
+<section id="about" class="section py-20 bg-black text-white">
+    <div class="container mx-auto px-6">
+        <section id="about" class="section py-20 bg-black text-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">About <span class="text-blue-500">Me</span></h2>
                 <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
-                <p class="text-white-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    Here you'll find more information about me, my skills, and my academic journey.
-                </p>
+            </div>
+        <div class="flex flex-col md:flex-row gap-12 items-start">
+            <!-- Left: Terminal -->
+            <div class="md:w-1/2 w-full mb-10 md:mb-0">
+                <div class="terminal bg-gray-900 p-6 rounded-lg border border-blue-500/30 shadow-lg shadow-blue-500/10">
+                    <h4 class="text-lg font-medium mb-4 text-green-400">Init: About_<span class="text-blue-500">Me</span>();</h4>
+                    <div class="loading-bar bg-gray-700 h-1 w-full mb-6 overflow-hidden rounded-full">
+                        <div class="loading-progress bg-blue-500 h-full"></div>
+                    </div>
+                    <div class="content animate-fade-in-delay">
+                        <div class="space-y-4 text-gray-300 text-justify terminal-text">
+                            I'm <span class="font-medium text-blue-500">Vanessa Suharly</span>, an aspiring Developer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects.
+                            </p>
+                            <p>
+                                Skilled in <span class="font-medium text-yellow-400">HTML, CSS, Scratch, MIT App Inventor, VS Code</span>, and various design tools, make me excel at creating functional and user-friendly applications. As a <span class="font-medium text-purple-400"> Programmer in the Coding Club</span>, I executed various coding projects, including website development and automation tasks.
+                            </p>
+                            <p>
+                                My leadership as the <span class="font-medium text-purple-400">Director of Academic Affairs in student council</span> has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community. While in <span class="font-medium text-purple-400"> Broadcasting club as a  Creative Production Lead</span>, I honed my skills in content creation and project management. Working closely with journalists and student council members, I produced compelling media content while learning to balance creative vision with organizational requirements.
+                            </p>
+                            <p>
+                                I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.
+                            </p>
+                        </div>
+                        <a href="#contact" class="mt-8 inline-block px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg glow-on-hover">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
             </div>
             
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">Get to know me!</h3>
-                    <div class="space-y-4 text-white-600 dark:text-gray-300 text-justify">
-                        <p>
-                            I'm <span class="font-medium text-blue-500">Vanessa Suharly</span>, an aspiring software engineer with a strong foundation in programming and website development. I have a passion for digital innovation, demonstrated by my experience in developing websites and building software projects.
-                        </p>
-                        <p>
-                            Skilled in <span class="font-medium">HTML, C++</span>, and various design tools, I excel at creating functional and user-friendly applications. As a Programmer in the Coding Club, I executed various coding projects, including website development and automation tasks.
-                        </p>
-                        <p>
-                            My leadership as the <span class="font-medium">Director of Academic Affairs in OSIS</span> has strengthened my communication and teamwork skills, where I led initiatives and fostered collaboration within the academic community.
-                        </p>
-                        <p>
-                            I'm excited to leverage my technical and leadership experience to develop innovative solutions and contribute to the world of software engineering.
-                        </p>
-                    </div>
-                    
-                    <a href="#contact" class="mt-8 inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        Contact Me
-                    </a>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <h3 class="text-2xl font-semibold mb-6">My <span class="text-blue-500">Skills</span></h3>
+            <!-- Right: About Content -->
+            <div class="md:w-1/2 w-full">
+                <div class="bg-gray-900 p-6 rounded-lg border border-blue-500/30 shadow-lg shadow-blue-500/10 h-full">
+                    <h3 class="text-2xl font-semibold mb-6 glitch-sm" data-text="My Skills">My <span class="text-blue-500">Skills</span></h3>
                     
                     <div class="mb-8">
-                        <h4 class="text-lg font-medium mb-4">Technical Skills</h4>
-                        <div class="space-y-3">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>HTML</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>CSS</span>
-                                    <span>60%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 60%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>JavaScript</span>
-                                    <span>40%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 40%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>MIT App Inventor</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
-                                </div>
-                             </div>
-                             <div>
-                                <div class="flex justify-between mb-1">
-                                    <span>Scratch</span>
-                                    <span>70%</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2.5">
-                                    <div class="skill-bar-fill h-2.5 rounded-full bg-blue-500" style="--skill-level: 70%"></div>
-                                </div>
-                            </div>
-                                                  </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-medium mb-4">Soft Skills</h4>
+                        <h4 class="text-lg font-medium mb-4 text-orange-400">Technical Skills</h4>
                         <div class="flex flex-wrap gap-3">
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Leadership</span>
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Problem Solving</span>
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Teamwork</span>
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Communication</span>
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Adaptability</span>
-                            <span class="skill-tag px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Time Management</span>
+                            <span class="skill-tag px-3 py-1 bg-orange-100 text-black rounded-full text-sm hover:scale-105 transition-transform">HTML</span>
+                            <span class="skill-tag px-3 py-1 bg-orange-100 text-black rounded-full text-sm hover:scale-105 transition-transform">CSS</span>
+                            <span class="skill-tag px-3 py-1 bg-orange-100 text-black rounded-full text-sm hover:scale-105 transition-transform">JavaScript</span>
+                            <span class="skill-tag px-3 py-1 bg-orange-100 text-black rounded-full text-sm hover:scale-105 transition-transform">MIT App Inventor</span>
+                            <span class="skill-tag px-3 py-1 bg-orange-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Scratch</span>
                         </div>
                     </div>
                     
-                    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-        onclick="openModal(
-            'Academic Focus Grade',
-            '',
-            `<p> | Advanced Mathematics - 87,93,86 <p> | English - 90,92,92 <p> | Informatics - 85,87,98 <p> | Economics - 91,94,92 
-                <p><a href='./assets/TRANSCRIPT SCORE TRANSLATED.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> View Transcript </a>`
-        )"
-    >
-        <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400">
-                <i class="fas fa-graduation-cap text-xl"></i>
-            </div>
-            <h4 class="font-semibold">Academic Focus</h4>
-        </div>
-        <p class="mt-3 text-sm text-white-600 dark:text-gray-400">Click to view my academic performance in key subjects</p>
-    </div>
-
-    <div class="bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
-        onclick="openModal(
-            'Organization', 
-            '', 
-            `<p> | Programmer and Designer - Coding Club <p><i class='text-blue-500'>July 2024 - Present</i></p> 
-             | Content Creator - Broadcasting <p><i class='text-blue-500'>August 2022 - June 2024</i></p> 
-             | Director of Academic Affairs - Student Council/OSIS <p><i class='text-blue-500'>November 2022 - November 2023</i></p> 
-             <p><a href='./assets/TRACK RECORD.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> Leadership & Extracurricular Track Record </a>`)"
-    >
-
-        <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center text-orange-500 dark:text-orange-400">
-                <i class="fas fa-users text-xl"></i>
-            </div>
-            <h4 class="font-semibold">Organization</h4>
-        </div>
-        <p class="mt-3 text-sm text-white-600 dark:text-gray-400">Click to view my organizational involvement</p>
-    </div>
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4 text-blue-400">Soft Skills</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Leadership</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Problem Solving</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Teamwork</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Communication</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Adaptability</span>
+                            <span class="skill-tag px-3 py-1 bg-blue-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Time Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-lg font-medium mb-4 text-green-400">Languages</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="skill-tag px-3 py-1 bg-green-100 text-black rounded-full text-sm hover:scale-105 transition-transform">Indonesian</span>
+                            <span class="skill-tag px-3 py-1 bg-green-100 text-black rounded-full text-sm hover:scale-105 transition-transform">English</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-blue-500 border border-slate-700"
+                            onclick="openModal(
+                                'Academic Focus Grade',
+                                '',
+                                `<p> | Advanced Mathematics - 87,93,86 <p> | English - 90,92,92 <p> | Informatics - 85,87,98 <p> | Economics - 91,94,92 
+                                    <p><a href='/assets/TRANSCRIPT GRADE Translated_portofolio.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> View Transcript </a>`
+                            )">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-blue-100/20 flex items-center justify-center text-blue-400">
+                                    <i class="fas fa-graduation-cap text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold">Academic Focus</h4>
+                            </div>
+                            <p class="mt-3 text-sm text-gray-400">Click to view my academic performance in key subjects</p>
+                        </div>
+                        
+                        <div class="bg-slate-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-blue-500 border border-slate-700" 
+                            onclick="openModal(
+                                'Organization', 
+                                '', 
+                                ` <p> 
+    | Programmer and Designer <br> 
+    Coding Club <br>
+    <i class='text-blue-500'>July 2024 - Present</i>
+</p>
+<br>
+<p> 
+    | Creative Production Lead <br>
+    Broadcasting <br>
+    <i class='text-blue-500'>August 2022 - June 2024</i>
+</p>
+<br>
+<p> 
+    | Director of Academic Affairs <br>
+    Student Council/OSIS <br>
+    <i class='text-blue-500'>November 2022 - November 2023</i>
+</p>
+                                 <p><a href='/assets/TRACK RECORD.pdf' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'> Leadership & Extracurricular Track Record </a>`)">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-full bg-orange-100/20 flex items-center justify-center text-orange-400">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                                <h4 class="font-semibold">Organization</h4>
+                            </div>
+                            <p class="mt-3 text-sm text-gray-400">Click to view my organizational involvement</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Projects Section -->
     <section id="projects" class="section py-20 bg-black">
@@ -943,7 +850,7 @@
         <button onclick="openModal(
             'WEATHER APP',
             'April 2022 - June 2022',
-            `<span class='text-blue-500'>Technology:</span> <span class='text-white'>MIT App Inventor</span>
+            `<span class='text-blue-500'>Tools:</span> <span class='text-white'>MIT App Inventor</span>
             <p> <span class='text-blue-500'>Role:</span> Developer & Designer<br>
             <span class='text-justify block'>Weather is one of my first projects, and I learned a lot from it. Through this project, I gained experience in app development, particularly in understanding how to fetch and display weather data, designing a user-friendly interface, and troubleshooting errors. I designed and coded the app myself, which helped me develop problem-solving skills and improve my logical thinking. The app was built using MIT App Inventor, making it a great introduction to mobile app development.</span><br>
             <a href='https://drive.google.com/file/d/1f6q31cJeHojBVVi2eKDSXCIfF42HJtbQ/view?usp=sharing' class='mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105' target='_blank'>Download Weather App (.apk) &mdash; via Google Drive</a>`,
@@ -976,7 +883,7 @@
         <button onclick="openModal(
             'CUBE GAME',
             'July 2023 - September 2023',
-            '&lt;span class=\'text-blue-500\'&gt;Technology:&lt;/span&gt; <span class=\'text-white\'>Scratch</span>&lt;br&gt;' +
+            '&lt;span class=\'text-blue-500\'&gt;Tools:&lt;/span&gt; <span class=\'text-white\'>Scratch</span>&lt;br&gt;' +
             '&lt;span class=\'text-blue-500\'&gt;Role:&lt;/span&gt; <span class=\'text-white\'>Lead Game Designer &amp; Programmer</span>&lt;br&gt;' +
             '&lt;span class=\'text-justify\'&gt; <span class=\'text-white\'>Cube is a video game where players must leap across platforms within a set time limit. I worked on this project with my friends, but my primary responsibility was designing the game and coding the main mechanics. My friends helped with additional coding tasks, but I was deeply involved in ensuring the game\'s logic and user experience were smooth. This project taught me a lot about game physics, timing mechanisms, and the importance of collaborative work in game development. We built CUBE using Scratch, which made it easy to visualize and implement game logic.</span>&lt;/span&gt;&lt;br&gt;' +
             '&lt;a href=\'https://scratch.mit.edu/projects/1050833889\' class=\'mt-4 inline-block px-4 py-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-slate-800 font-medium rounded-lg transition-all duration-300 transform hover:scale-105\' target=\'_blank\'&gt;View  My Game &quot;CUBE&quot; &amp;mdash; on Scratch&lt;/a&gt;',
@@ -1138,7 +1045,7 @@
                                 <textarea 
                                     id="message" 
                                     name="message" 
-                                    autocomplete="on" 
+                                    autocomplete="off" 
                                     rows="4" 
                                     required 
                                     class="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
