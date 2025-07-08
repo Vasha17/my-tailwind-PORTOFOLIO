@@ -292,16 +292,17 @@
         }
     }
         
-/* V hover effect */
-.v-part {
-    display: inline-block;
-    transition: all 0.3s ease;
-    color: #1e40af;
-}
-.logo:hover .v-part {
-    transform: scale(1.1);
-    color: #2563eb;
-}
+        /* V hover effect */
+        .v-part {
+            display: inline-block;
+            transition: all 0.3s ease;
+            color: #1e40af;
+        }
+        .logo:hover .v-part {
+            transform: scale(1.1);
+            color: #2563eb;
+        }
+
         /* Wave underline for nav links (both desktop and mobile) */
         .nav-link {
             position: relative; /* Important */
@@ -446,16 +447,16 @@
             opacity: 0;
         }
         
-/* Navbar glass effect */
-.navbar-glass {
-    backdrop-filter: blur(16px) saturate(180%);
-    -webkit-backdrop-filter: blur(16px) saturate(180%);
-    background: rgba(31, 52, 89, 0.55);
-    box-shadow: 0 8px 32px 0 rgba(31, 52, 89, 0.18);
-    z-index: 100; /* Pastikan lebih tinggi dari mobile menu */
-    position: fixed;
-    width: 100%;
-}
+        /* Navbar glass effect */
+        .navbar-glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background: rgba(31, 52, 89, 0.55);
+            box-shadow: 0 8px 32px 0 rgba(31, 52, 89, 0.18);
+            z-index: 100; /* Pastikan lebih tinggi dari mobile menu */
+            position: fixed;
+            width: 100%;
+        }
 
         .dark .navbar-glass {
             background: rgba(31, 52, 89, 0.35);
@@ -481,13 +482,13 @@
             padding-bottom: 4rem;
         }
         
-        @media (max-width: 768px) {
-    .hero-image-container {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-}
+                @media (max-width: 768px) {
+            .hero-image-container {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
             .hero-content {
                 padding-top: 6rem;
                 text-align: center;
@@ -530,33 +531,33 @@
                 margin: 0 auto;
             }
         
-        .dark .modal-content {
-    background-color: #1e293b; /* bg-slate-800 */
-    color: white;
-}
+            .dark .modal-content {
+                background-color: #1e293b; /* bg-slate-800 */
+                color: white;
+            }
 
-.prose.dark.prose-invert {
-    color: white;
-}
+            .prose.dark.prose-invert {
+                color: white;
+            }
 
-#mobile-menu {
-    position: fixed; /* Ganti dari absolute ke fixed */
-    top: 80px; /* Sesuaikan dengan tinggi navbar */
-    left: 0;
-    right: 0;
-    z-index: 50;
-    display: none;
-    background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+            #mobile-menu {
+                position: fixed; /* Ganti dari absolute ke fixed */
+                top: 80px; /* Sesuaikan dengan tinggi navbar */
+                left: 0;
+                right: 0;
+                z-index: 50;
+                display: none;
+                background-color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
 
-.dark #mobile-menu {
-    background-color: #1e293b;
-}
+            .dark #mobile-menu {
+                background-color: #1e293b;
+            }
 
-#mobile-menu:not(.hidden) {
-    display: block;
-}
+            #mobile-menu:not(.hidden) {
+                display: block;
+            }
     </style>
 
 </head>
@@ -631,22 +632,11 @@
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-white light:text-black dark:text-white">
                                         Hi, I'm <span class="bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text">V</span><span class="text-blue-500">anessa</span>
                 </h1> 
-                <div class="hero-description text-lg mb-8 text-white max-w-lg mx-auto md:mx-0 text-justify-center">
-                    <div class="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 text-transparent bg-clip-text animate-gradient">
-                    <span class="inline-block">
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">A</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">s</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">p</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">i</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">r</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">i</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">n</span>
-                    <span class="inline-block hover:scale-110 transition-transform duration-300">g</span>
-                    </span>
-    <span class="inline-block hover:scale-110 transition-transform duration-300"> Developer</span>
-                    </div>
-
-                <p class="hero-description text-lg mb-8 text-white max-w-lg mx-auto md:mx-0 text-justify">
+                 <div class="text-white max-w-lg text-justify md:justify-start">
+                <div class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 mb-6">
+                    <span class="inline-block transition-transform duration-300">Aspiring Developer</span>
+                </div>
+                <p class="text-lg mb-8">
                     Passionate about creating digital solutions and exploring new technologies. Currently focused on web development and software engineering.
                 </p>
                 
@@ -658,16 +648,12 @@
                         Download CV
                     </a>
                 </div>
-                
                  <div class="mt-8 flex justify-center md:justify-start items-center space-x-3 mb-2">
                     <a href="https://www.linkedin.com/in/vanessa-suharly-370a59354/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-blue-500 hover:text-white transition-all duration-300">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
                         <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
-                        <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
@@ -700,7 +686,7 @@
             <!-- Left: Terminal -->
             <div class="md:w-1/2 w-full mb-10 md:mb-0">
                 <div class="terminal bg-gray-900 p-6 rounded-lg border border-blue-500/30 shadow-lg shadow-blue-500/10">
-                    <h4 class="text-lg font-medium mb-4 text-green-400">Init: About_<span class="text-blue-500">Me</span>();</h4>
+                    <h3 class="text-2xl font-semibold mb-6 glitch-sm" data-text="About Me">Intro<span class="text-blue-500">duction</span></h3>
                     <div class="loading-bar bg-gray-700 h-1 w-full mb-6 overflow-hidden rounded-full">
                         <div class="loading-progress bg-blue-500 h-full"></div>
                     </div>
@@ -980,18 +966,6 @@
                                 </a>
                             </div>
                         </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mt-1">
-                                <i class="fab fa-instagram text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-medium text-lg">Instagram</h4>
-                                <a href="https://www.instagram.com/vasha.74/" target="_blank" class="text-white hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
-                                    @vasha.74
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="mt-8">
@@ -1002,9 +976,6 @@
                             </a>
                             <a href="https://github.com/Vasha17" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-gray-800 hover:text-white transition-all duration-300">
                                 <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.instagram.com/vasha.74/" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-pink-500 hover:text-white transition-all duration-300">
-                                <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                     </div>
